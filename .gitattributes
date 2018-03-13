@@ -1,0 +1,7 @@
+# Normalize EOL to LF on checkin
+*    text
+*.cs text diff=csharp
+
+# Mark binaries explicitly
+*.dll binary
+*.exe binary
