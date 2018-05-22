@@ -1,0 +1,26 @@
+syntax = "proto3";
+package tdcr.dcr;
+
+import "network.proto";
+
+message Relation {
+  enum Type {
+    CONDITION = 0;
+    MILESTONE = 1;
+    INCLUDE = 2;
+    EXCLUDE = 3;
+    RESPONSE = 4;
+  }
+
+  Type type = 1;
+  tdcr.network.Uid anti = 2;
+}
+
+message Event {
+  tdcr.network.Uid guid = 1;
+  repeated Relation relations = 2;
+}
+
+message Workflow {
+  repeated Event events = 1;
+}

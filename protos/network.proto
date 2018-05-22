@@ -1,0 +1,24 @@
+syntax = "proto3";
+package tdcr.network;
+
+message Uid {
+  bytes data = 1;
+}
+
+message Addr {
+  bytes ip = 1;
+  uint32 port = 2;
+}
+
+message Container {
+  enum PayloadType {
+    HELLO = 0;
+    HELLO_ACK = 1;
+    GET_PEERS = 2;
+    PEER_LIST = 3;
+  }
+
+  Uid sender = 1;
+  PayloadType type = 2;
+  bytes payload = 3;
+}

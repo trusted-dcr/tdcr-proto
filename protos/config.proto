@@ -1,0 +1,12 @@
+syntax = "proto3";
+package tdcr.config;
+
+import "dcr.proto";
+import "network.proto";
+
+message Config {
+  tdcr.dcr.Workflow workflow = 1;
+  repeated tdcr.network.Uid peers = 2;
+  repeated tdcr.network.Addr addrs = 3;
+  repeated tdcr.network.Uid eventOfPeer = 4;
+}
