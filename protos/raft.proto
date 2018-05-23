@@ -1,0 +1,76 @@
+syntax = "proto3";
+package tdcr.raft;
+
+import "network.proto";
+import "crypto.proto";
+
+/* COMMAND TYPES */
+enum CommandType {
+  LOCK = 0;
+  ABORT = 1;
+  EXEC = 2;
+}
+
+message CommandTag {
+  tdcr.network.Uid uid = 1;
+  CommandType type = 2;
+}
+
+message CommandRequest {
+  CommandTag tag = 3;
+  tdcr.network.Uid event = 4;
+  tdcr.crypto.Mac128 mac = 5;
+}
+
+message CommandResponse {
+  CommandTag tag = 3;
+  bool success = 4;
+  tdcr.network.Uid leader = 5;
+}
+
+/* APPEND TYPES */
+message Entry {
+  uint32 index = 1;
+  uint32 term = 2;
+  CommandTag tag = 3;
+}
+
+message AppendRequest {
+  uint32 term = 3;
+  uint32 prev_term = 4;
+  uint32 prev_index = 5;
+  uint32 commit_index = 6;
+  repeated Entry entries = 7;
+}
+
+message AppendResponse {
+  uint32 term = 3;
+  uint32 prev_term = 4;
+  uint32 prev_index = 5;
+  bool success = 6;
+  uint32 last_index = 7;
+}
+
+/* POLL TYPES */
+message PollRequest {
+  uint32 term = 3;
+  uint32 last_term = 4;
+  uint32 last_index = 5;
+}
+
+message PollResponse {
+  uint32 term = 3;
+  bool success = 4;
+}
+
+/* ELECTION TYPES */
+message ElectionRequest {
+  uint32 term = 3;
+  uint32 last_term = 4;
+  uint32 last_index = 5;
+}
+
+message ElectionResponse {
+  uint32 term = 3;
+  bool success = 4;
+}

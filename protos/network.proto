@@ -1,8 +1,11 @@
 syntax = "proto3";
 package tdcr.network;
 
+import "crypto.proto";
+
 message Uid {
-  bytes data = 1;
+  uint64 part1 = 1;
+  uint64 part2 = 2;
 }
 
 message Addr {
@@ -12,13 +15,19 @@ message Addr {
 
 message Container {
   enum PayloadType {
-    HELLO = 0;
-    HELLO_ACK = 1;
-    GET_PEERS = 2;
-    PEER_LIST = 3;
+    COMMAND_REQUEST = 0;
+    COMMAND_RESPONSE = 1;
+    APPEND_REQUEST = 2;
+    APPEND_RESPONSE = 3;
+    POLL_REQUEST = 4;
+    POLL_RESPONSE = 5;
+    ELECTION_REQUEST = 6;
+    ELECTION_RESPONSE = 7;
   }
 
-  Uid sender = 1;
-  PayloadType type = 2;
-  bytes payload = 3;
+  Uid target = 1;
+  Uid source = 2;
+  PayloadType type = 3;
+  bytes payload = 4;
+  tdcr.crypto.Mac128 mac = 5;
 }

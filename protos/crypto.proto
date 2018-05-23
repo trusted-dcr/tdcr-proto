@@ -1,0 +1,7 @@
+syntax = "proto3";
+package tdcr.crypto;
+
+message Mac128 {
+  uint64 part1 = 1;
+  uint64 part2 = 2;
+}
