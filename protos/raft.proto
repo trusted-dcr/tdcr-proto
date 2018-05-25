@@ -17,15 +17,15 @@ message CommandTag {
 }
 
 message CommandRequest {
-  CommandTag tag = 3;
-  tdcr.network.Uid event = 4;
-  tdcr.crypto.Mac128 mac = 5;
+  CommandTag tag = 1;
+  tdcr.network.Uid event = 2;
+  tdcr.crypto.Mac128 mac = 3;
 }
 
 message CommandResponse {
-  CommandTag tag = 3;
-  bool success = 4;
-  tdcr.network.Uid leader = 5;
+  CommandTag tag = 1;
+  bool success = 2;
+  tdcr.network.Uid leader = 3;
 }
 
 /* APPEND TYPES */
@@ -36,43 +36,43 @@ message Entry {
 }
 
 message AppendRequest {
-  uint32 term = 3;
-  uint32 prev_term = 4;
-  uint32 prev_index = 5;
-  uint32 commit_index = 6;
-  repeated Entry entries = 7;
+  uint32 term = 1;
+  uint32 prev_term = 2;
+  uint32 prev_index = 3;
+  uint32 commit_index = 4;
+  repeated Entry entries = 5;
 }
 
 message AppendResponse {
-  uint32 term = 3;
-  uint32 prev_term = 4;
-  uint32 prev_index = 5;
-  bool success = 6;
-  uint32 last_index = 7;
+  uint32 term = 1;
+  uint32 prev_term = 2;
+  uint32 prev_index = 3;
+  bool success = 4;
+  uint32 last_index = 5;
 }
 
 /* POLL TYPES */
 message PollRequest {
-  uint32 term = 3;
-  uint32 last_term = 4;
-  uint32 last_index = 5;
+  uint32 term = 1;
+  uint32 last_term = 2;
+  uint32 last_index = 3;
 }
 
 message PollResponse {
-  uint32 term = 3;
-  bool success = 4;
+  uint32 term = 1;
+  bool success = 2;
 }
 
 /* ELECTION TYPES */
 message ElectionRequest {
-  uint32 term = 3;
-  uint32 last_term = 4;
-  uint32 last_index = 5;
+  uint32 term = 1;
+  uint32 last_term = 2;
+  uint32 last_index = 3;
 }
 
 message ElectionResponse {
-  uint32 term = 3;
-  bool success = 4;
+  uint32 term = 1;
+  bool success = 2;
 }
 
 /* LOG TYPES */
