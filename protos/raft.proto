@@ -74,3 +74,13 @@ message ElectionResponse {
   uint32 term = 3;
   bool success = 4;
 }
+
+/* LOG TYPES */
+message LogRequest {
+}
+
+message LogResponse {
+  repeated Entry entries = 1;
+  bool success = 2;
+  tdcr.network.Uid leader = 3;
+}
