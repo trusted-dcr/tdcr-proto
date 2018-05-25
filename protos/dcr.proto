@@ -1,4 +1,5 @@
 syntax = "proto3";
+option csharp_namespace = "TDCR.CoreLib.Wire.Dcr";
 package tdcr.dcr;
 
 import "network.proto";
