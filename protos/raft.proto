@@ -81,7 +81,7 @@ message LogRequest {
 }
 
 message LogResponse {
-  repeated Entry entries = 1;
-  bool success = 2;
-  tdcr.network.Uid leader = 3;
+  bool success = 1;
+  tdcr.network.Uid leader = 2;
+  repeated Entry entries = 3;
 }
