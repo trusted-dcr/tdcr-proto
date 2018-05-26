@@ -18,7 +18,7 @@ message Relation {
 }
 
 message Event {
-  tdcr.network.Uid guid = 1;
+  tdcr.network.Uid uid = 1;
   repeated Relation relations = 2;
 }
 

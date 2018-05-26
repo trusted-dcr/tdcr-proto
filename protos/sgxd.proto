@@ -1,0 +1,23 @@
+syntax = "proto3";
+package tdcr.sgxd;
+
+import "google/protobuf/empty.proto";
+import "network.proto";
+
+message SgxConfig {
+  message Peer {
+    tdcr.network.Uid uid = 1;
+    tdcr.network.Uid event  = 2;
+  }
+  tdcr.network.Uid self = 1;
+  repeated Peer peers = 2;
+}
+
+service SgxDaemon {
+  // Confiure the SgxDaemon and start operating
+  rpc Config(SgxConfig) returns (google.protobuf.Empty);
+
+  // Send a message to the underlying enclave
+  // If target is not configured self, the message is dropped
+  rpc Send(tdcr.network.Container) returns (google.protobuf.Empty);
+}
