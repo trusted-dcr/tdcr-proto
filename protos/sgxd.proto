@@ -3,14 +3,17 @@ package tdcr.sgxd;
 
 import "google/protobuf/empty.proto";
 import "network.proto";
+import "dcr.proto";
 
 message SgxConfig {
   message Peer {
     tdcr.network.Uid uid = 1;
     tdcr.network.Uid event  = 2;
+    tdcr.network.Addr addr = 3;
   }
   tdcr.network.Uid self = 1;
-  repeated Peer peers = 2;
+  tdcr.dcr.Workflow workflow = 2;
+  repeated Peer peers = 3;
 }
 
 service SgxDaemon {

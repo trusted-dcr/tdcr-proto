@@ -14,14 +14,11 @@ message Relation {
   }
 
   Type type = 1;
-  tdcr.network.Uid anti = 2;
-}
-
-message Event {
-  tdcr.network.Uid uid = 1;
-  repeated Relation relations = 2;
+  tdcr.network.Uid from = 2;
+  tdcr.network.Uid to = 3;
 }
 
 message Workflow {
-  repeated Event events = 1;
+  repeated tdcr.network.Uid events = 1;
+  repeated Relation relations = 2;
 }
