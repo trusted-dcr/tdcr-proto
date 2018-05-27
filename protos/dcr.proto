@@ -4,21 +4,22 @@ package tdcr.dcr;
 
 import "network.proto";
 
-message Relation {
-  enum Type {
-    CONDITION = 0;
-    MILESTONE = 1;
-    INCLUDE = 2;
-    EXCLUDE = 3;
-    RESPONSE = 4;
-  }
+message Events {
+  tdcr.network Uid UID = 1;
+  string name = 2;
 
-  Type type = 1;
-  tdcr.network.Uid from = 2;
-  tdcr.network.Uid to = 3;
+  bool executed = 3;
+  bool included = 4;
+  bool pending = 5;
+
+  repeated tdcr.network.Uid conditionrelations = 6;
+  repeated tdcr.network.Uid milestonerelations = 7;
+  repeated tdcr.network.Uid includedrelations = 8;
+  repeated tdcr.network.Uid excludedrelations = 9;
+  repeated tdcr.network.Uid pendingrelations = 10;
+
 }
 
 message Workflow {
-  repeated tdcr.network.Uid events = 1;
-  repeated Relation relations = 2;
+  repeated tdcr.messages.Event events = 1;
 }
