@@ -1,4 +1,5 @@
 syntax = "proto3";
+option csharp_namespace = "TDCR.CoreLib.Wire.Sgx";
 package tdcr.sgxd;
 
 import "google/protobuf/empty.proto";
