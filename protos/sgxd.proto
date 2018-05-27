@@ -9,7 +9,7 @@ message SgxConfig {
   message Peer {
     tdcr.network.Uid uid = 1;
     tdcr.network.Uid event  = 2;
-    tdcr.network.Addr addr = 3;
+    uint32 address = 3;
   }
   tdcr.network.Uid self = 1;
   tdcr.dcr.Workflow workflow = 2;
