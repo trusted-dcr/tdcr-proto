@@ -33,7 +33,9 @@ message CommandResponse {
 message Entry {
   uint32 index = 1;
   uint32 term = 2;
-  CommandTag tag = 3;
+  tdcr.network.Uid event = 3;
+  tdcr.network.Uid source = 4;
+  CommandTag tag = 5;
 }
 
 message AppendRequest {
