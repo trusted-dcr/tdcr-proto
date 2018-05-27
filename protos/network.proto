@@ -24,6 +24,8 @@ message Container {
     POLL_RESPONSE = 5;
     ELECTION_REQUEST = 6;
     ELECTION_RESPONSE = 7;
+    LOG_REQUEST = 8;
+    LOG_RESPONSE = 9;
   }
 
   Uid target = 1;
