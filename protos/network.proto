@@ -10,7 +10,7 @@ message Uid {
 }
 
 message Addr {
-  bytes ip = 1;
+  uint64 ip = 1;
   uint32 port = 2;
 }
 

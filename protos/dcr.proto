@@ -5,19 +5,18 @@ package tdcr.dcr;
 import "network.proto";
 
 message Event {
-  tdcr.network.Uid UID = 1;
+  tdcr.network.Uid uid = 1;
   string name = 2;
 
   bool executed = 3;
-  bool included = 4;
+  bool excluded = 4;
   bool pending = 5;
 
-  repeated tdcr.network.Uid conditionrelations = 6;
-  repeated tdcr.network.Uid milestonerelations = 7;
-  repeated tdcr.network.Uid includedrelations = 8;
-  repeated tdcr.network.Uid excludedrelations = 9;
-  repeated tdcr.network.Uid pendingrelations = 10;
-
+  repeated tdcr.network.Uid conditionRelations = 6;
+  repeated tdcr.network.Uid milestoneRelations = 7;
+  repeated tdcr.network.Uid includeRelations = 8;
+  repeated tdcr.network.Uid excludeRelations = 9;
+  repeated tdcr.network.Uid pendingRelations = 10;
 }
 
 message Workflow {
