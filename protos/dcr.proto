@@ -21,5 +21,6 @@ message Event {
 }
 
 message Workflow {
-  repeated Event events = 1;
+  string name = 1;
+  repeated Event events = 2;
 }
