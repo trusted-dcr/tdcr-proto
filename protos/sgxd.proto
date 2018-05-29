@@ -25,4 +25,6 @@ service SgxDaemon {
   // Send a message to the underlying enclave
   // If target is not configured self, the message is dropped
   rpc Send(tdcr.network.Container) returns (google.protobuf.Empty);
+
+  rpc Execute(tdcr.network.Uid) returns (google.protobuf.Empty);
 }
