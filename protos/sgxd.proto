@@ -22,9 +22,13 @@ service SgxDaemon {
   // Confiure the SgxDaemon and start operating
   rpc Config(SgxConfig) returns (google.protobuf.Empty);
 
+  // Stop the SgxDaemon
+  rpc Stop(google.protobuf.Empty) returns (google.protobuf.Empty);
+
   // Send a message to the underlying enclave
   // If target is not configured self, the message is dropped
   rpc Send(tdcr.network.Container) returns (google.protobuf.Empty);
 
+  // Execute a DCR event
   rpc Execute(tdcr.network.Uid) returns (google.protobuf.Empty);
 }
