@@ -16,7 +16,7 @@ message Event {
   repeated tdcr.network.Uid milestoneRelations = 7;
   repeated tdcr.network.Uid includeRelations = 8;
   repeated tdcr.network.Uid excludeRelations = 9;
-  repeated tdcr.network.Uid pendingRelations = 10;
+  repeated tdcr.network.Uid responseRelations = 10;
 }
 
 message Workflow {
