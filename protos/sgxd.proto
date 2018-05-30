@@ -5,6 +5,7 @@ package tdcr.sgxd;
 import "google/protobuf/empty.proto";
 import "network.proto";
 import "dcr.proto";
+import "raft.proto";
 
 message SgxConfig {
   message Peer {
@@ -16,6 +17,14 @@ message SgxConfig {
   tdcr.network.Uid self = 1;
   tdcr.dcr.Workflow workflow = 2;
   repeated Peer peers = 3;
+}
+
+message Snapshot {
+  message Local {
+    tdcr.network.Uid cluster = 1;
+    repeated tdcr.raft.Entry entries = 2;
+  }
+  repeated Local parts = 1;
 }
 
 service SgxDaemon {
@@ -31,4 +40,7 @@ service SgxDaemon {
 
   // Execute a DCR event
   rpc Execute(tdcr.network.Uid) returns (google.protobuf.Empty);
+
+  // Run the cheapshot algorithm from this daemon
+  rpc History(google.protobuf.Empty) returns (Snapshot);
 }
